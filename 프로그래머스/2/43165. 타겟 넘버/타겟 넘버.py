@@ -10,7 +10,8 @@ def solution(numbers, target):
             # 타겟과 현재 수 비교 후 +1 하기
             if num == target:
                 answer[0] = answer[0] + 1
-
+            return
+        
         # 다음 재귀 더하기 or 빼기
         if len(numbers) > cnt:
             dfs(cnt+1, num + numbers[cnt])
