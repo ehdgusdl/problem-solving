@@ -6,6 +6,7 @@
 ## Array
 |  |
 | ------- |
+| [0055-jump-game](https://github.com/ehdgusdl/problem-solving/tree/master/0055-jump-game) |
 | [0200-number-of-islands](https://github.com/ehdgusdl/problem-solving/tree/master/0200-number-of-islands) |
 | [0733-flood-fill](https://github.com/ehdgusdl/problem-solving/tree/master/0733-flood-fill) |
 ## Depth-First Search
@@ -27,4 +28,12 @@
 | ------- |
 | [0200-number-of-islands](https://github.com/ehdgusdl/problem-solving/tree/master/0200-number-of-islands) |
 | [0733-flood-fill](https://github.com/ehdgusdl/problem-solving/tree/master/0733-flood-fill) |
+## Dynamic Programming
+|  |
+| ------- |
+| [0055-jump-game](https://github.com/ehdgusdl/problem-solving/tree/master/0055-jump-game) |
+## Greedy
+|  |
+| ------- |
+| [0055-jump-game](https://github.com/ehdgusdl/problem-solving/tree/master/0055-jump-game) |
 <!---LeetCode Topics End-->
