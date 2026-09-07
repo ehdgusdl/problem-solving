@@ -19,27 +19,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
-      # 루트에 생긴 LeetHub 폴더를 LeetCode/ 아래로 이동 (없으면 그냥 통과)
-      - name: Move LeetCode solutions
+      - name: Move LeetCode solutions & push
         run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+
+          # 트리거 시점 SHA가 아니라 항상 최신 main 위에서 작업 (리베이스 충돌 원인 제거)
+          git fetch origin main
+          git reset --hard origin/main
+
           shopt -s nullglob
           dirs=([0-9][0-9][0-9][0-9]-*/)
-          if [ ${#dirs[@]} -gt 0 ]; then
-            mkdir -p LeetCode
-            mv "${dirs[@]}" LeetCode/
+          if [ ${#dirs[@]} -eq 0 ]; then
+            echo "No LeetHub folders at root"
+            exit 0
           fi
 
-      # 이동한 게 있을 때만 커밋, push 전 원격 변경 반영
-      - name: Commit & push
-        run: |
-          if git status --porcelain | grep -q .; then
-            git config user.name 'github-actions[bot]'
-            git config user.email 'github-actions[bot]@users.noreply.github.com'
-            git add -A
-            git commit -m "chore: move LeetCode solutions to LeetCode folder"
-            git pull --rebase origin main
-            git push
-          else
-            echo "No changes to commit"
-          fi
+          # 같은 이름 폴더가 이미 LeetCode/에 있으면 내용만 합침
+          for d in "${dirs[@]}"; do
+            mkdir -p "LeetCode/$d"
+            cp -a "$d." "LeetCode/$d"
+            rm -rf "$d"
+          done
+
+          git add -A
+          git commit -m "chore: move LeetCode solutions to LeetCode folder"
+          git push
