@@ -1,9 +1,9 @@
+# 각 칸에 이 칸을 오른쪽 아래 꼭짓점으로 하는 최대 정사각형의 한 변을 저장
+# 왼쪽 위 -> 오른쪽 아래 순서로 순회하면서 이미 계산된 위/왼쪽/왼쪽위를 참고
 def solution(board):
     
     answer = 0
     
-    # 각 칸에 "이 칸을 오른쪽 아래 꼭짓점으로 하는 최대 정사각형의 한 변"을 저장
-    # 왼쪽 위 → 오른쪽 아래 순서로 순회하면서 이미 계산된 위/왼쪽/왼쪽위를 참고
     x = len(board)
     y = len(board[0])
     for i in range(x):
@@ -22,6 +22,7 @@ def solution(board):
                 
             # 한 변의 길이 최대 구하기
             answer = max(answer, board[i][j])
+            
             
     # 한 변의 길이를 제곱해서 넓이 반환
     return answer ** 2
