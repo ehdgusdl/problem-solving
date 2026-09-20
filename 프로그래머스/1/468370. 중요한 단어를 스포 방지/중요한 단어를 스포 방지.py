@@ -7,7 +7,7 @@
 def solution(message, spoiler_ranges):
     answer = 0
 
-    # 모든 단어를 리스트에 넣기
+    # 모든 단어를 리스트에 넣기 # 첫 단어 시작 공백 고려
     word_list1 = message.split(' ')
     word_list2 = message.split(' ')
     
@@ -16,6 +16,11 @@ def solution(message, spoiler_ranges):
     # 스포 방지 구간에 포함된 단어를 리스트에 넣기
     # word_list에 len으로 길이 수로 판단 끝나면 + 1 해서 다음 단어로 
     for word in word_list1:
+        
+        # 첫 시작 공백은 패쓰
+        if word == '':
+            idx += 1
+            continue
         
         # word 단어 시작 지점 끝 지점에 인덱스가 겹치는지 
         for start, end in spoiler_ranges:
