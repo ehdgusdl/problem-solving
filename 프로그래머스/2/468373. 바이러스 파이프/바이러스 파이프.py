@@ -37,6 +37,9 @@ def solution(n, infection, edges, k):
         # for문으로 연결된 모든 간선 확인
         for _ in range(len(edges)):
             
+            # 감염이 되기전 기준
+            before = len(A) + len(B) + len(C)
+            
             # 감염 노드 기준 갈수있는 노드 확인 + # A or B or C 나눠서 고려
             for node1, node2, pipe in edges:
                 
@@ -53,8 +56,12 @@ def solution(n, infection, edges, k):
                 if pipe == 3 and (node1 in C or node2 in C):
                     C.add(node1)
                     C.add(node2)
-            
-        # 모든 감염 큐에 삽입
+                    
+            # 감염 된게 하나도 없으므로 스킵
+            if len(A) + len(B) + len(C) == before:
+                break
+                
+        # 모든 감염을 큐에 삽입
         q.append([A, cnt + 1])
         q.append([B, cnt + 1])
         q.append([C, cnt + 1])
