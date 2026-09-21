@@ -35,7 +35,7 @@ def solution(n, infection, edges, k):
         C = set(virus)
         
         # for문으로 다음에 열 파이프
-        for _ in range(n):
+        for _ in range(len(edges)):
             
             # 감염 노드 기준 갈수있는 노드 확인 + # A or B or C 나눠서 고려
             for node1, node2, pipe in edges:
