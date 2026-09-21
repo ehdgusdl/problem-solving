@@ -34,7 +34,7 @@ def solution(n, infection, edges, k):
         B = set(virus)
         C = set(virus)
         
-        # for문으로 다음에 열 파이프
+        # for문으로 연결된 모든 간선 확인
         for _ in range(len(edges)):
             
             # 감염 노드 기준 갈수있는 노드 확인 + # A or B or C 나눠서 고려
