@@ -18,5 +18,6 @@ def solution(s):
         s = format(c, 'b')
     
     
+    
     # 이진 변환 수 + 제거된 0 개수
     return [cnt, cnt0]
